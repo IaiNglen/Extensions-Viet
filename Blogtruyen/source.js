@@ -597,7 +597,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.Blogtruyen = exports.BlogtruyenInfo = void 0;
 const paperback_extensions_common_1 = require("paperback-extensions-common");
 const BlogtruyenParser_1 = require("./BlogtruyenParser");
-const DOMAIN = 'https://blogtruyen.vn';
+const DOMAIN = 'https://blogtruyenmoi.com';
 const method = 'GET';
 exports.BlogtruyenInfo = {
     version: '2.0.1',
@@ -606,7 +606,7 @@ exports.BlogtruyenInfo = {
     author: 'Huynhzip3',
     authorWebsite: 'https://github.com/huynh12345678',
     description: 'Extension that pulls manga from Blogtruyen',
-    websiteBaseURL: `https://blogtruyen.vn`,
+    websiteBaseURL: `https://blogtruyenmoi.com`,
     contentRating: paperback_extensions_common_1.ContentRating.MATURE,
     sourceTags: [
         {
@@ -635,12 +635,12 @@ class Blogtruyen extends paperback_extensions_common_1.Source {
             }
         });
     }
-    getMangaShareUrl(mangaId) { return `https://blogtruyen.vn${mangaId}`; }
+    getMangaShareUrl(mangaId) { return `https://blogtruyenmoi.com${mangaId}`; }
     ;
     getMangaDetails(mangaId) {
         var _a, _b;
         return __awaiter(this, void 0, void 0, function* () {
-            const url = `https://blogtruyen.vn${mangaId}`;
+            const url = `https://blogtruyenmoi.com${mangaId}`;
             const request = createRequestObject({
                 url: url,
                 method: "GET",
@@ -686,7 +686,7 @@ class Blogtruyen extends paperback_extensions_common_1.Source {
     getChapters(mangaId) {
         return __awaiter(this, void 0, void 0, function* () {
             const request = createRequestObject({
-                url: `https://blogtruyen.vn${mangaId}`,
+                url: `https://blogtruyenmoi.com${mangaId}`,
                 method,
             });
             const response = yield this.requestManager.schedule(request, 1);
@@ -718,7 +718,7 @@ class Blogtruyen extends paperback_extensions_common_1.Source {
     getChapterDetails(mangaId, chapterId) {
         return __awaiter(this, void 0, void 0, function* () {
             const request = createRequestObject({
-                url: `https://blogtruyen.vn${chapterId}`,
+                url: `https://blogtruyenmoi.com${chapterId}`,
                 method
             });
             const response = yield this.requestManager.schedule(request, 1);
@@ -788,7 +788,7 @@ class Blogtruyen extends paperback_extensions_common_1.Source {
             //Featured
             let url = `${DOMAIN}`;
             let request = createRequestObject({
-                url: 'https://blogtruyen.vn/thumb',
+                url: 'https://blogtruyenmoi.com/thumb',
                 method: "GET",
             });
             let data = yield this.requestManager.schedule(request, 1);
@@ -813,7 +813,7 @@ class Blogtruyen extends paperback_extensions_common_1.Source {
             //Hot
             url = '';
             request = createRequestObject({
-                url: 'https://blogtruyen.vn/ajax/Search/AjaxLoadListManga?key=tatca&orderBy=3&p=1',
+                url: 'https://blogtruyenmoi.com/ajax/Search/AjaxLoadListManga?key=tatca&orderBy=3&p=1',
                 method: "GET",
             });
             let hotItems = [];
@@ -840,7 +840,7 @@ class Blogtruyen extends paperback_extensions_common_1.Source {
             //New Updates
             url = '';
             request = createRequestObject({
-                url: 'https://blogtruyen.vn/thumb',
+                url: 'https://blogtruyenmoi.com/thumb',
                 method: "GET",
             });
             let newUpdatedItems = [];
@@ -868,7 +868,7 @@ class Blogtruyen extends paperback_extensions_common_1.Source {
             //New Added
             url = DOMAIN;
             request = createRequestObject({
-                url: 'https://blogtruyen.vn/thumb',
+                url: 'https://blogtruyenmoi.com/thumb',
                 method: "GET",
             });
             let newAddItems = [];
@@ -896,7 +896,7 @@ class Blogtruyen extends paperback_extensions_common_1.Source {
             //full
             url = '';
             request = createRequestObject({
-                url: 'https://blogtruyen.vn/ajax/Category/AjaxLoadMangaByCategory?id=0&orderBy=5&p=1',
+                url: 'https://blogtruyenmoi.com/ajax/Category/AjaxLoadMangaByCategory?id=0&orderBy=5&p=1',
                 method: "GET",
             });
             let fullItems = [];
@@ -923,7 +923,7 @@ class Blogtruyen extends paperback_extensions_common_1.Source {
             //girl
             url = '';
             request = createRequestObject({
-                url: 'https://blogtruyen.vn/ajax/Category/AjaxLoadMangaByCategory?id=29&orderBy=5&p=1',
+                url: 'https://blogtruyenmoi.com/ajax/Category/AjaxLoadMangaByCategory?id=29&orderBy=5&p=1',
                 method: "GET",
             });
             let girlItems = [];
@@ -950,7 +950,7 @@ class Blogtruyen extends paperback_extensions_common_1.Source {
             //boy
             url = '';
             request = createRequestObject({
-                url: 'https://blogtruyen.vn/ajax/Category/AjaxLoadMangaByCategory?id=31&orderBy=5&p=1',
+                url: 'https://blogtruyenmoi.com/ajax/Category/AjaxLoadMangaByCategory?id=31&orderBy=5&p=1',
                 method: "GET",
             });
             let boyItems = [];
@@ -985,23 +985,23 @@ class Blogtruyen extends paperback_extensions_common_1.Source {
             let select = 1;
             switch (homepageSectionId) {
                 case "hot":
-                    url = `https://blogtruyen.vn/ajax/Search/AjaxLoadListManga?key=tatca&orderBy=3&p=${page}`;
+                    url = `https://blogtruyenmoi.com/ajax/Search/AjaxLoadListManga?key=tatca&orderBy=3&p=${page}`;
                     select = 0;
                     break;
                 case "new_updated":
-                    url = `https://blogtruyen.vn/thumb-${page}`;
+                    url = `https://blogtruyenmoi.com/thumb-${page}`;
                     select = 1;
                     break;
                 case "full":
-                    url = `https://blogtruyen.vn/ajax/Category/AjaxLoadMangaByCategory?id=0&orderBy=5&p=${page}`;
+                    url = `https://blogtruyenmoi.com/ajax/Category/AjaxLoadMangaByCategory?id=0&orderBy=5&p=${page}`;
                     select = 0;
                     break;
                 case "girl":
-                    url = `https://blogtruyen.vn/ajax/Category/AjaxLoadMangaByCategory?id=29&orderBy=5&p=${page}`;
+                    url = `https://blogtruyenmoi.com/ajax/Category/AjaxLoadMangaByCategory?id=29&orderBy=5&p=${page}`;
                     select = 0;
                     break;
                 case "boy":
-                    url = `https://blogtruyen.vn/ajax/Category/AjaxLoadMangaByCategory?id=31&orderBy=5&p=${page}`;
+                    url = `https://blogtruyenmoi.com/ajax/Category/AjaxLoadMangaByCategory?id=31&orderBy=5&p=${page}`;
                     select = 0;
                     break;
                 default:
@@ -1028,7 +1028,7 @@ class Blogtruyen extends paperback_extensions_common_1.Source {
             let page = (_a = metadata === null || metadata === void 0 ? void 0 : metadata.page) !== null && _a !== void 0 ? _a : 1;
             const tags = (_c = (_b = query.includedTags) === null || _b === void 0 ? void 0 : _b.map(tag => tag.id)) !== null && _c !== void 0 ? _c : [];
             const request = createRequestObject({
-                url: encodeURI(`https://blogtruyen.vn/timkiem/nangcao/1/0/${tags[0] ? tags[0] : '-1'}/-1?txt=${query.title ? query.title : ''}`),
+                url: encodeURI(`https://blogtruyenmoi.com/timkiem/nangcao/1/0/${tags[0] ? tags[0] : '-1'}/-1?txt=${query.title ? query.title : ''}`),
                 method: "GET",
                 param: encodeURI(`&p=${page}`)
             });
@@ -1046,7 +1046,7 @@ class Blogtruyen extends paperback_extensions_common_1.Source {
         var _a;
         return __awaiter(this, void 0, void 0, function* () {
             const tags = [];
-            const url = `https://blogtruyen.vn/timkiem/nangcao`;
+            const url = `https://blogtruyenmoi.com/timkiem/nangcao`;
             const request = createRequestObject({
                 url: url,
                 method: "GET",

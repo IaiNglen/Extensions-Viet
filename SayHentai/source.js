@@ -601,7 +601,7 @@ exports.SayHentai = exports.SayHentaiInfo = void 0;
 const paperback_extensions_common_1 = require("paperback-extensions-common");
 const tag_json_1 = __importDefault(require("./tag.json"));
 const SayHentaiParser_1 = require("./SayHentaiParser");
-const DOMAIN = 'https://sayhentai.net/';
+const DOMAIN = 'https://sayhentai.me/';
 const method = 'GET';
 exports.SayHentaiInfo = {
     version: '2.0.1',
@@ -610,7 +610,7 @@ exports.SayHentaiInfo = {
     author: 'Huynhzip3',
     authorWebsite: 'https://github.com/huynh12345678',
     description: 'Extension that pulls manga from SayHentai',
-    websiteBaseURL: `https://sayhentai.net/`,
+    websiteBaseURL: `https://sayhentai.me/`,
     contentRating: paperback_extensions_common_1.ContentRating.ADULT,
     sourceTags: [
         {
@@ -639,12 +639,12 @@ class SayHentai extends paperback_extensions_common_1.Source {
             }
         });
     }
-    getMangaShareUrl(mangaId) { return `https://sayhentai.net/${mangaId}`; }
+    getMangaShareUrl(mangaId) { return `https://sayhentai.me/${mangaId}`; }
     ;
     getMangaDetails(mangaId) {
         var _a;
         return __awaiter(this, void 0, void 0, function* () {
-            const url = `https://sayhentai.net/${mangaId}`;
+            const url = `https://sayhentai.me/${mangaId}`;
             const request = createRequestObject({
                 url: url,
                 method: "GET",
@@ -669,7 +669,7 @@ class SayHentai extends paperback_extensions_common_1.Source {
                 artist: creator,
                 desc: desc,
                 titles: [$('.wrap-content-info > h1').text().trim()],
-                image: (image === null || image === void 0 ? void 0 : image.includes('http')) ? image : ((image === null || image === void 0 ? void 0 : image.includes('//')) ? ('https:' + image.replace('//st.truyenchon.com', '//st.imageinstant.net')) : ('https://sayhentai.net/' + image)),
+                image: (image === null || image === void 0 ? void 0 : image.includes('http')) ? image : ((image === null || image === void 0 ? void 0 : image.includes('//')) ? ('https:' + image.replace('//st.truyenchon.com', '//st.imageinstant.net')) : ('https://sayhentai.me/' + image)),
                 status,
                 // rating: parseFloat($('span[itemprop="ratingValue"]').text()),
                 hentai: true,
@@ -680,7 +680,7 @@ class SayHentai extends paperback_extensions_common_1.Source {
     getChapters(mangaId) {
         return __awaiter(this, void 0, void 0, function* () {
             const request = createRequestObject({
-                url: `https://sayhentai.net/${mangaId}`,
+                url: `https://sayhentai.me/${mangaId}`,
                 method,
             });
             const response = yield this.requestManager.schedule(request, 1);
@@ -704,7 +704,7 @@ class SayHentai extends paperback_extensions_common_1.Source {
     getChapterDetails(mangaId, chapterId) {
         return __awaiter(this, void 0, void 0, function* () {
             const request = createRequestObject({
-                url: `https://sayhentai.net/${chapterId}`,
+                url: `https://sayhentai.me/${chapterId}`,
                 method
             });
             const response = yield this.requestManager.schedule(request, 1);
@@ -714,7 +714,7 @@ class SayHentai extends paperback_extensions_common_1.Source {
                 if (!obj.attribs['data-src'])
                     continue;
                 let link = obj.attribs['data-src'].includes('http') ?
-                    (obj.attribs['data-src']).trim() : ('https://sayhentai.net/' + obj.attribs['data-src']).trim();
+                    (obj.attribs['data-src']).trim() : ('https://sayhentai.me/' + obj.attribs['data-src']).trim();
                 pages.push(encodeURI(link));
             }
             const chapterDetails = createChapterDetails({
@@ -752,7 +752,7 @@ class SayHentai extends paperback_extensions_common_1.Source {
             //Hot
             let url = '';
             let request = createRequestObject({
-                url: 'https://sayhentai.net/',
+                url: 'https://sayhentai.me/',
                 method: "GET",
             });
             let hotItems = [];
@@ -766,7 +766,7 @@ class SayHentai extends paperback_extensions_common_1.Source {
                 // if (!id || !subtitle) continue;
                 hotItems.push(createMangaTile({
                     id: id,
-                    image: (image === null || image === void 0 ? void 0 : image.includes('http')) ? image : ((image === null || image === void 0 ? void 0 : image.includes('//')) ? ('https:' + image.replace('//st.truyenchon.com', '//st.imageinstant.net')) : ('https://sayhentai.net/' + image)),
+                    image: (image === null || image === void 0 ? void 0 : image.includes('http')) ? image : ((image === null || image === void 0 ? void 0 : image.includes('//')) ? ('https:' + image.replace('//st.truyenchon.com', '//st.imageinstant.net')) : ('https://sayhentai.me/' + image)),
                     title: createIconText({
                         text: title,
                     }),
@@ -780,7 +780,7 @@ class SayHentai extends paperback_extensions_common_1.Source {
             //New Updates
             url = '';
             request = createRequestObject({
-                url: 'https://sayhentai.net/',
+                url: 'https://sayhentai.me/',
                 method: "GET",
             });
             let newUpdatedItems = [];
@@ -794,7 +794,7 @@ class SayHentai extends paperback_extensions_common_1.Source {
                 // if (!id || !subtitle) continue;
                 newUpdatedItems.push(createMangaTile({
                     id: id,
-                    image: (image === null || image === void 0 ? void 0 : image.includes('http')) ? image : ((image === null || image === void 0 ? void 0 : image.includes('//')) ? ('https:' + image.replace('//st.truyenchon.com', '//st.imageinstant.net')) : ('https://sayhentai.net/' + image)),
+                    image: (image === null || image === void 0 ? void 0 : image.includes('http')) ? image : ((image === null || image === void 0 ? void 0 : image.includes('//')) ? ('https:' + image.replace('//st.truyenchon.com', '//st.imageinstant.net')) : ('https://sayhentai.me/' + image)),
                     title: createIconText({
                         text: title,
                     }),
@@ -808,7 +808,7 @@ class SayHentai extends paperback_extensions_common_1.Source {
             //New Added
             url = DOMAIN;
             request = createRequestObject({
-                url: 'https://sayhentai.net/',
+                url: 'https://sayhentai.me/',
                 method: "GET",
             });
             let newAddItems = [];
@@ -822,7 +822,7 @@ class SayHentai extends paperback_extensions_common_1.Source {
                 // if (!id || !subtitle) continue;
                 newAddItems.push(createMangaTile({
                     id: id,
-                    image: (image === null || image === void 0 ? void 0 : image.includes('http')) ? image : ((image === null || image === void 0 ? void 0 : image.includes('//')) ? ('https:' + image.replace('//st.truyenchon.com', '//st.imageinstant.net')) : ('https://sayhentai.net/' + image)),
+                    image: (image === null || image === void 0 ? void 0 : image.includes('http')) ? image : ((image === null || image === void 0 ? void 0 : image.includes('//')) ? ('https:' + image.replace('//st.truyenchon.com', '//st.imageinstant.net')) : ('https://sayhentai.me/' + image)),
                     title: createIconText({
                         text: title,
                     }),
@@ -843,13 +843,13 @@ class SayHentai extends paperback_extensions_common_1.Source {
             let url = '';
             switch (homepageSectionId) {
                 case "hot":
-                    url = `https://sayhentai.net/danh-sach-truyen.html?status=0&sort=views&page=${page}`;
+                    url = `https://sayhentai.me/danh-sach-truyen.html?status=0&sort=views&page=${page}`;
                     break;
                 case "new_updated":
-                    url = `https://sayhentai.net/danh-sach-truyen.html?page=${page}`;
+                    url = `https://sayhentai.me/danh-sach-truyen.html?page=${page}`;
                     break;
                 case "new_added":
-                    url = `https://sayhentai.net/danh-sach-truyen.html?status=0&sort=id&page=${page}`;
+                    url = `https://sayhentai.me/danh-sach-truyen.html?status=0&sort=id&page=${page}`;
                     break;
                 default:
                     return Promise.resolve(createPagedResults({ results: [] }));
@@ -896,7 +896,7 @@ class SayHentai extends paperback_extensions_common_1.Source {
                 }
             });
             const request = createRequestObject({
-                url: (tags[0] === 'all' ? 'https://sayhentai.net/danh-sach-truyen.html?' : encodeURI(`https://sayhentai.net/danh-sach-truyen.html?status=${search.status}&name=${search.name}&genre=${search.genres}&sort=${search.sort}`)),
+                url: (tags[0] === 'all' ? 'https://sayhentai.me/danh-sach-truyen.html?' : encodeURI(`https://sayhentai.me/danh-sach-truyen.html?status=${search.status}&name=${search.name}&genre=${search.genres}&sort=${search.sort}`)),
                 method: "GET",
                 param: encodeURI(`&page=${page}`)
             });
@@ -976,7 +976,7 @@ exports.parseSearch = ($) => {
         let id = (_a = $(`.info-bottom > a`, obj).attr("href")) !== null && _a !== void 0 ? _a : title;
         mangas.push(createMangaTile({
             id: encodeURIComponent(id),
-            image: (image === null || image === void 0 ? void 0 : image.includes('http')) ? image : ((image === null || image === void 0 ? void 0 : image.includes('//')) ? ('https:' + image.replace('//st.truyenchon.com', '//st.imageinstant.net')) : ('https://sayhentai.net/' + image)),
+            image: (image === null || image === void 0 ? void 0 : image.includes('http')) ? image : ((image === null || image === void 0 ? void 0 : image.includes('//')) ? ('https:' + image.replace('//st.truyenchon.com', '//st.imageinstant.net')) : ('https://sayhentai.me/' + image)),
             title: createIconText({ text: decodeHTMLEntity(title) }),
             subtitleText: createIconText({ text: subtitle }),
         }));
@@ -995,7 +995,7 @@ exports.parseViewMore = ($) => {
         if (!collectedIds.includes(id)) { //ko push truyện trùng nhau
             manga.push(createMangaTile({
                 id: encodeURIComponent(id),
-                image: (image === null || image === void 0 ? void 0 : image.includes('http')) ? image : ((image === null || image === void 0 ? void 0 : image.includes('//')) ? ('https:' + image.replace('//st.truyenchon.com', '//st.imageinstant.net')) : ('https://sayhentai.net/' + image)),
+                image: (image === null || image === void 0 ? void 0 : image.includes('http')) ? image : ((image === null || image === void 0 ? void 0 : image.includes('//')) ? ('https:' + image.replace('//st.truyenchon.com', '//st.imageinstant.net')) : ('https://sayhentai.me/' + image)),
                 title: createIconText({ text: decodeHTMLEntity(title) }),
                 subtitleText: createIconText({ text: subtitle }),
             }));
